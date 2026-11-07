@@ -26,7 +26,7 @@ const initial = { day: 1, minutes: 8 * 60, points: 0, reputation: 0, attendance:
 export const useGame = create<GameState>((set,get) => ({
   ...initial,
   tick: () => set(s => { let minutes=s.minutes+1, day=s.day; if(minutes>=22*60){minutes=7*60;day+=1} return {...s,minutes,day,lastSaved:Date.now()} }),
-  advance: (amount) => set(s => { const total=s.minutes+amount; return {...s,day:s.day+Math.floor(total/(24*60)),minutes:total%(24*60),lastSaved:Date.now()} }),
+  advance: (amount) => set(s => { let minutes=s.minutes+Math.max(0,amount), day=s.day; while(minutes>=22*60){minutes=7*60+(minutes-22*60);day+=1} return {...s,day,minutes,lastSaved:Date.now()} }),
   addPoints: amount => set(s=>({...s,points:Math.max(0,s.points+amount),reputation:Math.min(100,s.reputation+Math.max(0,Math.floor(amount/5))),lastSaved:Date.now()})),
   attend: subject => { const key=`attend:${get().day}:${subject}`; if(get().completed.includes(key))return; set(s=>({...s,attendance:s.attendance+1,points:s.points+10,completed:[...s.completed,key],lastSaved:Date.now()})) },
   exam: (subject,score) => set(s=>{const normalized=Math.max(0,Math.min(100,Math.round(score)));const old=s.grades.find(g=>g.subject===subject);const grades=old?s.grades.map(g=>g.subject===subject?{...g,score:Math.max(g.score,normalized),attempts:g.attempts+1}:g):[...s.grades,{subject,score:normalized,attempts:1}];return {...s,grades,points:s.points+Math.round(normalized/10),lastSaved:Date.now()}}),
