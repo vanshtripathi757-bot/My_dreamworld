@@ -70,7 +70,7 @@ export function GameWorld({input,cameraYaw,cameraPitch,onPrompt,onDialogue,onVis
    {npcs.map(n=><StudentNPC key={n.name} {...n} active={nearbyNpc===n.name}/>)}
    <Player key="campus-player" input={input} cameraYaw={cameraYaw} cameraPitch={cameraPitch} onPosition={reportPosition}/>
    </>}
-   {activeRoom && <Player key={activeRoom} input={input} cameraYaw={cameraYaw} cameraPitch={cameraPitch} spawn={[0,1,5.8]} onPosition={reportPosition}/>}
+   {activeRoom && <Player key={activeRoom} input={input} cameraYaw={cameraYaw} cameraPitch={cameraPitch} spawn={[0,1,.5]} onPosition={reportPosition}/>}
   </Physics>
   <Sparkles count={38} scale={[50,8,50]} size={1.5} speed={.12} opacity={.25} color="#fff4d8"/>
  </>
