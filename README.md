@@ -60,6 +60,7 @@ npm test
 ## Android
 
 ```bash
+npm run android:add   # once per checkout; creates android/
 npm run build
 npm run android:sync
 npm run android:build
