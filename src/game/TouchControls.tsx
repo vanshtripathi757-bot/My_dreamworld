@@ -1,3 +1,4 @@
+/* oxlint-disable react/immutability -- the shared ref is the intentional low-latency input channel for the frame loop. */
 import { useRef } from 'react'
 import type { MoveInput } from './Player'
 
