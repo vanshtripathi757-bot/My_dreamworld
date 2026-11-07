@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "The School Chronicles",
+  "short_name": "School Chronicles",
+  "description": "An original third-person 3D school-life exploration game.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#172b29",
+  "theme_color": "#203c32",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
