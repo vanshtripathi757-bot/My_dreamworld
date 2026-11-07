@@ -9,9 +9,13 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "cap:sync": "cap sync",
-    "android:add": "cap add android"
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:build": "cd android && ./gradlew assembleDebug",
+    "test": "tsx --test tests/*.test.mjs"
   },
   "dependencies": {
+    "@capacitor/android": "^8.6.0",
     "@capacitor/cli": "^8.6.0",
     "@capacitor/core": "^8.6.0",
     "@react-three/drei": "^10.7.9",
@@ -30,6 +34,7 @@
     "@types/three": "^0.187.0",
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.90.0",
+    "tsx": "^4.23.15",
     "typescript": "~7.0.2",
     "vite": "^8.3.6"
   }
