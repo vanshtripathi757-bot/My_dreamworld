@@ -37,3 +37,12 @@ test('local save round-trips and validates saved state', () => {
   assert.equal(useGame.getState().points, 35); assert.equal(useGame.getState().selectedClub, 'Science Club')
   storage.set('school-chronicles-save-v1', '{broken'); assert.equal(loadGame(), false)
 })
+
+test('joining the same club repeatedly does not farm points', () => {
+  reset(); useGame.getState().joinClub('Science Club'); useGame.getState().joinClub('Science Club')
+  assert.equal(useGame.getState().points, 5)
+})
+test('exam scores are clamped to the valid percentage range', () => {
+  reset(); useGame.getState().exam('Maths', 150)
+  assert.equal(useGame.getState().grades[0].score, 100)
+})
